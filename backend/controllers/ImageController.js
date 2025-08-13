@@ -34,29 +34,35 @@ const getImage = async(req, res)=>{
 }
 
 // Create new Image
-const createImage = async(req, res)=>{
-    try{
-        const {filename, originalName, url, caption} = req.body;
-
-        if(!filename || !originalName || !url){
-            return res.status(400).json({
-                error: "filename, originalName, and url are required",
-                message: "One of the items are not present"
-            })
-        }
-
-        const newImage = await Image.create({ filename, originalName, url, caption })
-        res.status(200).json({
-            message: "Image Posted",
-            image: newImage
-        })
+const createImage = async (req, res) => {
+  try {
+    // Multer stores the file info here
+    if (!req.file) {
+      return res.status(400).json({
+        error: 'Image file is required',
+        message: 'No image file was uploaded',
+      });
     }
-    catch (error){
-        res.status(500).json({
-            error: error.message,
-            message: "Encountered Server Error"
-        })
-    }
+
+    const { caption } = req.body;
+
+    const newImage = await Image.create({
+      filename: req.file.filename,
+      originalName: req.file.originalname,
+      url: `/uploads/${req.file.filename}`,
+      caption: caption || '',
+    });
+
+    res.status(201).json({
+      message: 'Image Posted',
+      image: newImage,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+      message: 'Encountered Server Error',
+    });
+  }
 }
 
 // Deleating an image

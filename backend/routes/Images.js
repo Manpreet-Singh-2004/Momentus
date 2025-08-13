@@ -8,6 +8,8 @@ const {
     updateImage
 } = require('../controllers/ImageController')
 
+const upload = require('../middleware/multerConfig');
+
 const router = express.Router()
 
 
@@ -19,7 +21,7 @@ router.get('/', getImages)
 
 router.get('/:id', getImage)
 
-router.post('/', createImage)
+router.post('/', upload.single('image'), createImage);
 
 router.delete('/:id', deleteImage)
 
