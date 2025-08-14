@@ -1,12 +1,13 @@
-const express = require('express');
+require('dotenv').config()
+const express = require('express')
 const mongoose = require('mongoose')
-require('dotenv').config();
 
 
 // Importing Routes
 const Home = require('./routes/Home')
 const Images = require('./routes/Images')
 const About = require('./routes/AboutUs')
+const userRoutes = require('./routes/userRoute')
 
 // Express App
 const app = express()
@@ -24,6 +25,7 @@ app.use((req, res, next) =>{
 app.use('/', Home)
 app.use('/aboutus', About)
 app.use('/api/images', Images)
+app.use('/api/user', userRoutes)
 
 mongoose.connect(process.env.MONGOURI)
     .then(() =>{

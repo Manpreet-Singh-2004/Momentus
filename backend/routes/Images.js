@@ -8,7 +8,8 @@ const {
     updateImage
 } = require('../controllers/ImageController')
 
-const upload = require('../middleware/multerConfig');
+const upload = require('../middleware/multerConfig')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
 
@@ -16,6 +17,9 @@ const router = express.Router()
 router.get('/welcome', (req, res) => {
     res.json({msg: 'Welcome to the Momentus API, here you will see all the images'})
 })
+
+// protecting routes
+router.use(requireAuth)
 
 router.get('/', getImages)
 
