@@ -5,9 +5,8 @@ const Image = require('../model/imageModel')
 // Get all images
 const getImages = async(req, res)=>{
 
-    const images = await Image.find()
-
-    res.status(200).json(images)
+    const images = await Image.find({ user: req.user._id });
+    res.status(200).json(images);
 }
 
 // Get a single Image
@@ -51,6 +50,7 @@ const createImage = async (req, res) => {
       originalName: req.file.originalname,
       url: `/uploads/${req.file.filename}`,
       caption: caption || '',
+      user: req.user._id,
     });
 
     res.status(201).json({

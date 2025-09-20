@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require("path");
 
 
 // Importing Routes
@@ -9,11 +10,14 @@ const Images = require('./routes/Images')
 const About = require('./routes/AboutUs')
 const userRoutes = require('./routes/userRoute')
 
+
 // Express App
 const app = express()
 
 // Middleware
 app.use(express.json())
+// serve uploads as static
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use((req, res, next) =>{
     console.log(req.path, req.method)
