@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Images from "./pages/Images";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import { Link } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         <Route path="/images" element={<Images />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Router>
   );

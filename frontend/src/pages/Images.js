@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Images.css"; // <-- import the CSS
+import "./Images.css";
 
 function Images() {
   const [images, setImages] = useState([]);

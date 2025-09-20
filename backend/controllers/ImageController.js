@@ -76,7 +76,7 @@ const deleteImage = async(req, res)=>{
             message: "The ID given is invalid, please provide a valid mongoose ID"
         })
     }
-    const deletedImageID = await Image.findOneAndDelete(id);
+    const deletedImageID = await Image.findByIdAndDelete(id);
     if(!deletedImageID){
         return res.status(404).json({
             error: 'Image not in Database',
