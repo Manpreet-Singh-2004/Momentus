@@ -1,0 +1,173 @@
+/* Page container */
+.images-page {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f5f5, #e0f7fa);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Header */
+.images-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.images-header h2 {
+  color: #1a237e; /* deep blue for header */
+}
+
+.images-header button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #ff4d6d; /* pink-red for logout */
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.images-header button:hover {
+  background-color: #ff1a3a;
+}
+
+/* Upload form */
+.upload-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.upload-form input[type="file"] {
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.upload-form input[type="text"] {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.upload-form button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #4d79ff; /* primary blue */
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.upload-form button:hover {
+  background-color: #1a4dff;
+}
+
+/* Error message */
+.error-message {
+  color: #d32f2f; /* deep red for errors */
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Images grid */
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Individual image card */
+.image-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.image-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.image-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Caption + buttons */
+.image-card p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.image-card button {
+  padding: 4px 10px;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.image-card button:hover {
+  opacity: 0.85;
+}
+
+.image-card .edit-btn {
+  background-color: #ffc107; /* amber */
+  color: white;
+}
+
+.image-card .delete-btn {
+  background-color: #ff4d6d; /* pink-red */
+  color: white;
+}
+
+.image-card .save-btn {
+  background-color: #4dff88; /* green accent */
+  color: white;
+}
+
+.image-card .cancel-btn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Modal for expanded image */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(26, 35, 126, 0.85); /* deep blue overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.modal-overlay img {
+  max-height: 90%;
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #000;
+}

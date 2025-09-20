@@ -1,6 +1,6 @@
-// frontend/src/pages/Signup.js
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "./Auth.css";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -26,7 +26,6 @@ function Signup() {
       if (!res.ok) {
         setError(data.error || "Signup failed");
       } else {
-        // Signup success → redirect to login
         navigate("/login");
       }
     } catch (err) {
@@ -36,11 +35,11 @@ function Signup() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "50px auto" }}>
+    <div className="auth-page">
       <h2>Sign Up</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-msg">{error}</p>}
 
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="text"
           placeholder="Full Name"
@@ -65,7 +64,7 @@ function Signup() {
           required
         />
 
-        <button type="submit" style={{ padding: "10px" }}>Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
 
       <p>

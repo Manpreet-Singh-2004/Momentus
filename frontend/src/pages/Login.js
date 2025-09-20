@@ -1,6 +1,6 @@
-// frontend/src/pages/Login.js
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "./Auth.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -25,16 +25,11 @@ function Login() {
       if (!res.ok) {
         setError(data.error || "Login failed");
       } else {
-        // Save JWT token separately
         localStorage.setItem("token", data.token);
-
-        // Save user info
         localStorage.setItem(
           "user",
           JSON.stringify({ name: data.name, email: data.email })
         );
-
-        console.log("JWT Token Saved to local storage");
         navigate("/images");
       }
     } catch (err) {
@@ -44,14 +39,11 @@ function Login() {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", margin: "50px auto" }}>
+    <div className="auth-page">
       <h2>Log In</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error-msg">{error}</p>}
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "15px" }}
-      >
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="email"
           placeholder="Email"
@@ -68,9 +60,7 @@ function Login() {
           required
         />
 
-        <button type="submit" style={{ padding: "10px" }}>
-          Log In
-        </button>
+        <button type="submit">Log In</button>
       </form>
 
       <p>
