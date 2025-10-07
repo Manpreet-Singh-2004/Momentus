@@ -1,91 +1,112 @@
-/* Home page container */
+/* Home.css - Refined with Animated Background */
+
+/* --- Page Container --- */
+/* The key change is the new animated background. A large, slow-moving gradient
+   uses the same colors as the title to fill the empty space without being distracting. */
 .home-page {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f5f5f5, #e0f7fa);
+  color: #333; /* Dark text for readability */
+  background: linear-gradient(-45deg, #e0f7fa, #f5f5f5, #d4f8e8, #cde6ff);
+  background-size: 400% 400%;
+  animation: backgroundGradient 25s ease infinite; /* Slower, more subtle animation */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
 }
 
-/* Title with animated gradient */
+/* --- Keyframes for the new background animation --- */
+@keyframes backgroundGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Title with Animated Gradient Text --- */
+/* Kept this the same as the original, as you liked it. */
 .home-page h1 {
   font-size: 4rem;
   margin-bottom: 20px;
-
   background: linear-gradient(270deg, #4CAF50, #2196F3, #4CAF50);
   background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: gradientShift 5s ease infinite;
 }
 
-/* Gradient animation keyframes */
+/* Keyframes for title text gradient */
 @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* Subtitle/paragraph */
+/* --- Subtitle/Paragraph --- */
+/* Sizing is kept closer to the original to feel more comfortable. */
 .home-page p {
   font-size: 1.2rem;
   margin-bottom: 30px;
   color: #555;
 }
 
-/* Buttons container */
+/* --- Buttons --- */
+/* Sizing and spacing are reverted to be closer to your original file,
+   addressing the "big and uncomfortable" feedback. */
 .home-page .button-group {
   display: flex;
   gap: 15px;
 }
 
-/* Button base style */
 .home-page button {
   padding: 12px 25px;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 8px; /* Original rounded corners */
   border: none;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: white; /* All buttons have white text by default */
 }
 
-/* Sign Up button */
+/* Subtle hover effect that feels modern but not oversized */
+.home-page button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Button specific styles from your original file */
 .home-page .signup-btn {
   background: #4CAF50;
-  color: white;
 }
 
 .home-page .signup-btn:hover {
   background: #43a047;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
-/* Log In button */
 .home-page .login-btn {
   background: #2196F3;
-  color: white;
 }
 
 .home-page .login-btn:hover {
   background: #1976d2;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
-/* Responsive tweaks */
+/* --- Fixed "About Us" Button --- */
+/* This now has a solid, readable background color as requested,
+   inspired by the original but with better contrast. */
+.about-btn {
+  background-color: #00bcd4; /* A clear, complementary cyan */
+}
+
+.about-btn:hover {
+  background-color: #0097a7;
+}
+
+
+/* --- Responsive Tweaks (from original) --- */
 @media (max-width: 500px) {
   .home-page h1 {
     font-size: 3rem;
@@ -103,12 +124,4 @@
   .home-page button {
     width: 100%;
   }
-}
-
-    .about-btn { background-color: #5DDAE9; 
-    color: white}
-    .about-btn:hover { background-color: #30CFE3; 
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }

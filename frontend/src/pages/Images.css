@@ -1,163 +1,195 @@
-/* Page container */
+/* Images.css - Modernized */
+
+/* --- Page Container & Background --- */
+/* Applying the consistent animated background to make the page feel part of the app. */
 .images-page {
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #f5f5f5, #e0f7fa);
   min-height: 100vh;
+  background: linear-gradient(-45deg, #e0f7fa, #f5f5f5, #d4f8e8, #cde6ff);
+  background-size: 400% 400%;
+  animation: backgroundGradient 25s ease infinite;
   color: #333;
 }
 
-/* Header */
+@keyframes backgroundGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Header --- */
 .images-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.images-header h2 {
-  color: #1a237e; /* deep blue for header */
-}
-
-.images-header button {
-  padding: 8px 16px;
-  border: none;
-  background-color: #ff4d6d; /* pink-red for logout */
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.images-header button:hover {
-  background-color: #ff1a3a;
-}
-
-/* Upload form */
-.upload-form {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
   margin-bottom: 30px;
 }
 
-.upload-form input[type="file"] {
-  border: 1px solid #ccc;
-  padding: 6px;
-  border-radius: 5px;
+/* Consistent animated title */
+.images-header h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(270deg, #4CAF50, #2196F3, #4CAF50);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Styled Logout button to be less jarring */
+.images-header button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #78909c; /* A neutral, modern grey-blue */
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.images-header button:hover {
+  background-color: #546e7a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* --- Modern Upload Form --- */
+.upload-form {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.upload-form input[type="file"],
+.upload-form input[type="text"] {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
 }
 
 .upload-form input[type="text"] {
   flex: 1;
-  padding: 6px 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
+/* Primary action button styling */
 .upload-form button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
-  background-color: #4d79ff; /* primary blue */
+  background-color: #4CAF50; /* Consistent Green */
   color: white;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.3s ease;
 }
 
 .upload-form button:hover {
-  background-color: #1a4dff;
+  background-color: #43a047;
+  transform: translateY(-2px);
 }
 
-/* Error message */
-.error-message {
-  color: #d32f2f; /* deep red for errors */
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-
-/* Images grid */
+/* --- Images Grid --- */
 .images-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
 }
 
-/* Individual image card */
+/* --- Glassmorphism Image Card --- */
 .image-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: white;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 15px;
+  box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .image-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px 0 rgba(44, 62, 80, 0.25);
 }
 
-/* Image */
 .image-card img {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 200px; /* Fixed height for a uniform grid */
+  object-fit: cover; /* Ensures images fill the space without distortion */
+  border-radius: 10px;
   cursor: pointer;
 }
 
-/* Caption + buttons */
 .image-card p {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #555;
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #2c3e50;
+  font-weight: 500;
 }
 
+/* --- Themed Card Buttons --- */
+/* The buttons now use colors from our established theme. */
 .image-card button {
-  padding: 4px 10px;
-  margin-top: 5px;
-  margin-right: 5px;
-  border-radius: 4px;
+  padding: 6px 12px;
+  margin-top: 10px;
+  margin-right: 8px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 0.8rem;
   font-weight: bold;
-  transition: 0.2s;
+  color: white;
+  transition: all 0.2s ease;
 }
 
 .image-card button:hover {
   opacity: 0.85;
+  transform: translateY(-1px);
 }
 
 .image-card .edit-btn {
-  background-color: #ffc107; /* amber */
-  color: white;
+  background-color: #2196F3; /* THEME: Blue */
 }
 
 .image-card .delete-btn {
-  background-color: #ff4d6d; /* pink-red */
-  color: white;
+  background-color: #e57373; /* A softer, more modern red */
 }
 
 .image-card .save-btn {
-  background-color: #4dff88; /* green accent */
-  color: white;
+  background-color: #4CAF50; /* THEME: Green */
 }
 
 .image-card .cancel-btn {
-  background-color: #ccc;
-  color: black;
+  background-color: #9e9e9e; /* THEME: Neutral Grey */
+  color: white;
 }
 
-/* Modal for expanded image */
+/* --- Modern Modal for Expanded Image --- */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(26, 35, 126, 0.85); /* deep blue overlay */
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark, semi-transparent overlay */
+  backdrop-filter: blur(8px); /* Blurs the background content */
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,8 +198,8 @@
 }
 
 .modal-overlay img {
-  max-height: 90%;
-  max-width: 90%;
-  border-radius: 8px;
-  box-shadow: 0 0 20px #000;
+  max-height: 90vh;
+  max-width: 90vw;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
 }

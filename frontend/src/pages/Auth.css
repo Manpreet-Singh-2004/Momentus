@@ -1,103 +1,140 @@
-/* Auth.css */
+/* Auth.css - Modernized */
 
+/* --- Page Container --- */
+/* Applying the same animated background from Home.css for a consistent look and feel.
+   This immediately solves the "empty" feeling. */
 .auth-page {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f0f4f8, #e3f2fd);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  padding: 20px;
+  background: linear-gradient(-45deg, #e0f7fa, #f5f5f5, #d4f8e8, #cde6ff);
+  background-size: 400% 400%;
+  animation: backgroundGradient 25s ease infinite;
 }
 
-/* Forms */
+@keyframes backgroundGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Page Title --- */
+/* The distracting 'titlePulse' animation has been removed.
+   It's replaced with the consistent animated gradient text from the other pages. */
+.auth-page h2 {
+  margin-bottom: 30px;
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(270deg, #4CAF50, #2196F3, #4CAF50);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Glassmorphism Form --- */
+/* The form is now a semi-transparent "glass" card.
+   The hover effect you liked is preserved. */
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  background: white;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  gap: 20px; /* Increased gap for better spacing */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(44, 62, 80, 0.2);
   width: 100%;
   max-width: 400px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .auth-form:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px); /* Kept the lift effect */
+  box-shadow: 0 12px 40px 0 rgba(44, 62, 80, 0.25);
 }
 
-/* Inputs */
+/* --- Modern Inputs --- */
 .auth-form input {
-  padding: 12px 15px;
+  padding: 14px 18px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent */
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.auth-form input::placeholder {
+  color: #666;
 }
 
 .auth-form input:focus {
-  border-color: #2196F3;
   outline: none;
+  border-color: rgba(33, 150, 243, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2); /* Focus ring for accessibility */
 }
 
-/* Buttons */
+/* --- Modern Button --- */
+/* Styled to match the primary buttons on the home page. */
 .auth-form button {
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
+  padding: 14px;
+  font-size: 1.1rem;
+  border-radius: 50px; /* Pill shape */
   border: none;
   font-weight: bold;
   cursor: pointer;
-  background: #2196F3;
+  background-image: linear-gradient(to right, #1976d2 0%, #2196F3 51%, #1976d2 100%);
+  background-size: 200% auto;
   color: white;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .auth-form button:hover {
+  background-position: right center; /* Gradient shift on hover */
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  background: #1976d2;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.25);
 }
 
-/* Headings */
-.auth-page h2 {
-  margin-bottom: 20px;
-  font-size: 2.5rem;
-  color: #333;
-  background: linear-gradient(90deg, #4CAF50, #2196F3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: titlePulse 2s infinite;
-}
-
-@keyframes titlePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* Error messages */
+/* --- Error Messages & Links --- */
 .error-msg {
-  color: red;
-  margin-bottom: 10px;
+  color: #c62828;
+  background-color: rgba(255, 205, 210, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: -10px 0 0 0;
 }
 
-/* Links */
 .auth-page p {
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 1rem;
-  color: #555;
+  color: #333; /* Darker text for better contrast */
 }
 
 .auth-page a {
-  color: #2196F3;
+  color: #1976d2;
   font-weight: bold;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .auth-page a:hover {
+  color: #4CAF50;
   text-decoration: underline;
 }
